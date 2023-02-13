@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="lista1.css">
+    <title>Super 2</title>
+</head>
+<body>
+    <h1>Meu Supermercado</h1>
+    <form action="exec8.php" method="post">
+        <fieldset>
+            <legend>Valor da Compra</legend>
+            <label>Valor Total (R$):</label>
+            <input type="number" name="compra" step="0.1" autofocus>
+        </fieldset>
+        <fieldset>
+            <legend>Preferências da Compra</legend>
+            <input type="checkbox" name="cartao" value="true"> Pagamento com cartão <br> 
+            <input type="checkbox" name="entrega" value="true"> Entrega à domicílio <br>
+        </fieldset>
+        <button type="submit">Calcular</button>
+    </form>
+
+</body>
+</html>

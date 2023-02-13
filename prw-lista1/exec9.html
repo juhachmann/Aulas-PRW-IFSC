@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="lista1.css">
+    <title>Lojinha</title>
+</head>
+<body>
+    <h1>Calcular meus descontos</h1>
+    <form action="exec9.php" method="post">
+        <fieldset>
+            <legend>Valor da Compra</legend>
+            <label>Valor Total (R$):</label>
+            <input type="number" name="compra" step="0.1" autofocus>
+        </fieldset>
+        <fieldset>
+            <legend>Forma de Pagamento</legend>
+            <input type="radio" name="a-vista" value="true" checked> À Vista
+            <input type="radio" name="a-vista" value="false"> À Prazo <br>
+
+            <input type="checkbox" name="visa"> Pagamento com Cartão Visa <br> 
+
+        </fieldset>
+        <button type="submit">Calcular</button>
+    </form>
+
+</body>
+</html>

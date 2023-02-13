@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="lista1.css">
+    <title>Cálculo Gasosa</title>
+</head>
+<body>
+    <h1>Quanto vou gastar de combustível?</h1>
+    <form action="exec2.php" method="post">
+        <fieldset>
+            <legend>Dados de combustível</legend>
+            
+            <label>Distância a percorrer (km) : </label>
+            <input type="number" name="km" step="0.1"><br>
+
+            <label>Consumo médio de seu carro (km/litro) : </label>
+            <input type="number" name="consumo" step="0.1"><br>
+
+            <label>Preço do combustível (R$) :</label>
+            <input type="number" name="preco" step="0.1"><br>
+
+            <button type="submit">Calcular</button>
+
+        </fieldset>
+    </form>
+</body>
+</html>
