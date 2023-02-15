@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="lista1.css">
     <title>Cálculo Gasosa</title>
 </head>
+
 <body>
     
     <h1>Quanto vou gastar de combustível?</h1>
@@ -17,9 +20,11 @@
         DEFINE("combustivel", $_POST["preco"]);
     ?>
 
-    <p>Você irá gastar em média R$ <?php echo ($distancia / $consumo * combustivel) ?> </p>
-    <p>Em sua viagem serão consumidos em média <?php echo ($distancia/$consumo) ?> litros de combustível. </p>
-    <p>Preço do litro do combustível: R$ <?php echo combustivel ?> </p>
+    
+    <p>Em sua viagem serão consumidos em média <span class="bold"><?php echo number_format(($distancia/$consumo), 2, ",", "") ?> litros</span> de combustível <br>
+    Preço do litro do combustível: R$ <?php echo number_format(combustivel, 2, ",", "") ?> <br>
+    Você irá gastar em média <span class="bold">R$ <?php echo number_format(($distancia / $consumo * combustivel), 2, ",", "") ?></span></p>
 
 </body>
+
 </html>

@@ -10,7 +10,9 @@
 <body>
 
     <?php
+        echo print_r($_POST);
 
+        
         $valorCompra = $_POST["compra"];
         
         $descCartao = $acrescEntrega = 0;
