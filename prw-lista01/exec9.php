@@ -12,12 +12,18 @@
 
     <?php
 
+        //if (!isset($_POST['teste'])) {
+        //    exit("Entramos na mensagem de erro!");
+        //}
+
         $valorCompra = $_POST["compra"];
        
         echo "<p>Valor da Compra: R$ $valorCompra</p>";
 
         $desc = $acresc = 0;
         $sorteio = false;
+
+        
 
         if ($_POST["a-vista"] == "true") {
             $desc = $valorCompra*0.05;

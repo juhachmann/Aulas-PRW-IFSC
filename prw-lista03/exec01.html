@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="lista3.css">
+    <title>Dados dos estudantes da Turma</title>
+</head>
+<body>
+    
+    <h1>Dados da Turma</h1>
+
+    <form action="exec01.php" method="post">
+
+        <fieldset>
+            <legend>Aluno 1</legend>
+            <label>Matrícula:</label>
+            <input type="text" name="est1[matr]" placeholder="Digite o nº de matrícula" autofocus><br>
+            <label>Nome:</label>
+            <input type="text" name="est1[nome]" placeholder="Digite o nome"><br>
+            <label>Média Final:</label>
+            <input type="number" name="est1[media]" min="0" max="10" step="0.5">            
+        </fieldset>
+
+        <fieldset>
+            <legend>Aluno 2</legend>
+            <label>Matrícula:</label>
+            <input type="text" name="est2[matr]" placeholder="Digite o nº de matrícula" autofocus><br>
+            <label>Nome:</label>
+            <input type="text" name="est2[nome]" placeholder="Digite o nome"><br>
+            <label>Média Final:</label>
+            <input type="number" name="est2[media]" min="0" max="10" step="0.5">            
+        </fieldset>
+
+        <fieldset>
+            <legend>Aluno 3</legend>
+            <label>Matrícula:</label>
+            <input type="text" name="est3[matr]" placeholder="Digite o nº de matrícula" autofocus><br>
+            <label>Nome:</label>
+            <input type="text" name="est3[nome]" placeholder="Digite o nome"><br>
+            <label>Média Final:</label>
+            <input type="number" name="est3[media]" min="0" max="10" step="0.5">            
+        </fieldset>
+        <button type="submit">Enviar!</button>
+
+    </form>
+
+</body>
+</html>

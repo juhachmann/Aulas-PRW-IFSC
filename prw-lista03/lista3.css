@@ -1,0 +1,68 @@
+body {
+    margin: auto;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: rgb(209, 255, 236);
+    padding: 2%;
+}
+
+
+h1 {
+    margin: auto;
+    font-weight: bold;
+    font-size: large;
+    opacity: 0.9;
+    text-align: center;
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+
+fieldset {
+    width: 50%;
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 3%;
+}
+
+
+legend {
+    font-size: large;
+    font-variant: small-caps;
+}
+
+
+label {
+    display: inline-block;
+    text-align: left;
+    width: 35%;
+    margin-bottom: 2%;
+}
+
+
+button {
+    display: block;
+    margin: auto;
+    margin-top: 3%;
+}
+
+
+p {
+    margin: auto;
+    text-align: center;
+    width: 40%;
+    border: 1px solid black;
+    padding: 0.5%;
+    background-color:  rgb(122, 197, 166);
+}
+
+
+.err {
+    color: red;
+}
+
+
+.bold {
+    font-weight: bold;
+}
+
+

@@ -15,7 +15,7 @@
 
         DEFINE("DESCONTO", 0.05);
 
-        //print_r($_POST); // Para mostrar na tela o que está pegando de dados
+        print_r($_POST); // Para mostrar na tela o que está pegando de dados
 
         /* 
         Array ( 

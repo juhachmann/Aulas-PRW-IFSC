@@ -11,15 +11,18 @@
 
     <?php
 
+        DEFINE('DESCONTO', 0.05);
+        DEFINE('ACRESCIMO', 0.02);
+
         $valorCompra = $_POST["compra"];
         
         $descCartao = $acrescEntrega = 0;
 
         if ($_POST["cartao"] == "true") {
-            $descCartao = $valorCompra * 0.05;
+            $descCartao = $valorCompra * DESCONTO;
         }
         if ($_POST["entrega"] == "true") {
-            $acrescEntrega = $valorCompra * 0.02;
+            $acrescEntrega = $valorCompra * ACRESCIMO;
         }
     ?>
 
