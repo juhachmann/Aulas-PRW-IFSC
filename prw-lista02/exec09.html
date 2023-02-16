@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Compras no Mercado</title>
+</head>
+<body>
+    <h1>Minhas compras no mercado</h1>
+    <form action="exec09.php" method="post">
+        <fieldset>
+            <legend>Selecione os itens do mercado:</legend>
+            <input type="checkbox" name="itens[Cheetos]" value="5"><label> Cheetos (R$ 5,00)</label><br>
+            <input type="checkbox" name="itens[Coca]" value="8"><label> Coca-Cola (R$ 8,00)</label><br>
+            <input type="checkbox" name="itens[Steak]" value="2"><label> Steak de Frango (R$ 2,00)</label><br>
+            <input type="checkbox" name="itens[Catchup]" value="3"><label> Catchup (R$ 3,00)</label><br>
+        </fieldset>
+        <fieldset>
+            <legend>Cartão Fidelidade</legend>
+            <input type="checkbox" name="desconto"><label> Pagamento com Cartão Fidelidade</label><br>
+        </fieldset>
+        <button type="submit">Enviar!</button>        
+    </form>
+</body>
+</html>

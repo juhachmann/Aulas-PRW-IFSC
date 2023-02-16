@@ -12,11 +12,14 @@
 
     <?php 
         $valorVenda = $_GET["valor-venda"];
+        DEFINE("desconto", 0.1);
+        DEFINE("ICMS", 0.12);
+        DEFINE("comissao", 0.05);
     ?>
 
     <p>Valor Total da Venda = R$ <?php echo $valorVenda?></p>
-    <p>Desconto obtido pelo cliente (10%) = R$ <?php echo $valorVenda * 0.1 ?></p>
-    <p>ICMS (12%) = R$ <?php echo $valorVenda * 0.12 ?> </p>
-    <p>Comissão do/a vendedor/a <?php echo $_GET["nome-vendedor"]?> (5%) = R$ <?php echo $valorVenda * 0.05 ?></p>
+    <p>Desconto obtido pelo cliente (10%) = R$ <?php echo $valorVenda * desconto ?></p>
+    <p>ICMS (12%) = R$ <?php echo $valorVenda * ICMS ?> </p>
+    <p>Comissão do/a vendedor/a <?php echo $_GET["nome-vendedor"]?> (5%) = R$ <?php echo $valorVenda * comissao ?></p>
 </body>
 </html>

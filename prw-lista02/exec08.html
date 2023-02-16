@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Compras na Farmácia</title>
+</head>
+<body>
+    <h1>Minhas compras na farmácia</h1>
+    <form action="exec08.php" method="post">
+        <fieldset>
+            <legend>Selecione os itens da farmácia:</legend>
+            <input type="checkbox" name="itens[Paracetamol]" value="5"><label> Paracetamol (R$ 5,00)</label><br>
+            <input type="checkbox" name="itens[Rivotril]" value="50"><label> Rivotril (R$ 50,00)</label><br>
+            <input type="checkbox" name="itens[Engov]" value="10"><label> Engov (R$ 10,00)</label><br>
+        </fieldset>
+        <fieldset>
+            <legend>Dados do cliente</legend>
+            <input type="checkbox" name="desconto"><label> Cliente possui mais de 60 anos</label><br>
+        </fieldset>
+        <button type="submit">Enviar!</button>        
+    </form>
+</body>
+</html>
