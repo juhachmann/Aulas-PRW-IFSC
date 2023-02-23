@@ -20,10 +20,17 @@
         if (array_key_exists("cartao", $_POST)) {
             $descCartao = $valorCompra * 0.05;
         }
+        
         if (array_key_exists("entrega", $_POST)) {
             $acrescEntrega = $valorCompra * 0.02;
         }
 
+        /* alternativa usa a função isset() para testar (o que é melhor em algumas situações)
+        if (isset($_POST['entrega'])) {
+            ...
+        }
+
+        */
     ?>
 
 <!-- <legend>Preferências da Compra</legend>

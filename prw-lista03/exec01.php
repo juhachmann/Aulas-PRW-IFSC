@@ -41,7 +41,19 @@
         }
 
         //print_r($alunos);
-
+        /* 
+        Array ( 
+            [0123] => Array ( 
+                [nome] => Ju 
+                [media] => 7 ) 
+            [0124] => Array ( 
+                [nome] => Paulo 
+                [media] => 10 ) 
+            [0125] => Array ( 
+                [nome] => André 
+                [media] => 9 ) 
+            ) 
+        */
 
         echo "<table>
                 <tr>
@@ -60,24 +72,84 @@
 
         echo "</table>";
 
-        
-        $notas = [];
-        foreach ($alunos as $mat) {
-            $notas[] = $mat['media'];
-        }
-        
 
+        // Exercício Dois e Três
+        // Usando um vetor auxiliar para armazenar só a Matrícula e a Nota e depois usar sum() e max() só neste vetor
+        $notas = [];
+        foreach ($alunos as $mat => $dados) { 
+            $notas[$mat] = $dados['media'];
+        }
+        // print_r($notas);
+       /* Array ( 
+            [0123] => 7 
+            [0124] => 10 
+            [0125] => 9 
+        )  */
+
+        // Pegando a Média
         echo "<p>Média da turma: " . number_format(array_sum($notas) / count($notas), 1, ".", "") . "</p>";
 
         // array_filter() -> para encontrar todas as chaves que contêm um valor. 
         // Meu problema: encontrar a chave da chave.. fazer um teste! (não quero!)
 
         $maiorNota = max($notas);
-        echo $maiorNota;
-        echo array_search($maiorNota, $alunos);
+
+        // Métodos para busca, cada um com suas especificidades:
+            // array_filter(), array_search(), array_keys($array, $value);
+
+        //print_r( array_keys($notas, $maiorNota) );
+        $matMaiorNota = array_keys($notas, $maiorNota);
+
+        echo "<table>
+                <tr>
+                    <th colspan='3'>Nota mais alta: " . $maiorNota . "</th>
+                </tr>";
+        foreach ($matMaiorNota as $mat) {
+            echo "<tr>
+                    <td>" . $mat . "</td>
+                    <td>" . $alunos[$mat]['nome'] . "</td>
+                    <td>" . $alunos[$mat]['media'] . "</td>
+                 </tr>";
+        }
+        echo "<tr>
+                <td colspan='3'>Total de alunos com a maior nota: " . count($matMaiorNota) . "</td>
+              </tr>
+            </table>";
 
 
 
+        // Atividade 4: como assim, tem que usar um armazenamento externo? Ou um javascript? Aí complicou..
+
+        // Atividade 5: sort em ordem descrescente de nota
+        echo "<p>Notas em ordem descrescente</p>";
+
+        rsort($notas);
+        print_r($notas);
+
+        echo "<table>
+        <tr>
+            <th>Matrícula</th>
+            <th>Nome</th>
+            <th>Média Final</th>";
+
+        foreach ($notas as $nota) {
+            // hummm.... se tiver nota repetida essa estratégia não vai funcionar né..
+            // Tem que pensar em como vou fazer isso aqui!!
+            // PHP tá me mostrando que eu sou burrinha demais
+            //echo $nota;
+            $mat = [array_search($nota, $alunos)];
+            print_r($mat);
+            /*
+            echo "<tr>
+                    <td>$mat</td>";
+            foreach ($alunos[$mat] as $dado => $valor) {
+                echo "<td>$valor</td>";
+            }
+            echo "</tr>";
+            */
+        }
+
+        //echo "</table>";
 
 
 
