@@ -14,7 +14,12 @@
 
     <?php
 
-        //print_r($_POST);
+
+        function pprint($array) {
+            return print("<pre>".print_r($array,true)."</pre>");
+        }
+
+        pprint_r($_POST);
 /*
         Array ( 
             [est1] => Array ( 
@@ -63,9 +68,9 @@
         
         foreach ($alunos as $mat => $dados) {
             echo "<tr>
-                    <td>$mat</td>";
-            foreach ($dados as $dado => $valor) {
-                echo "<td>$valor</td>";
+                    <td>".$mat."</td>";
+            foreach ($dados as $dado) {
+                echo "<td>".$dado."</td>";
             }
             echo "</tr>";
         }
@@ -123,8 +128,17 @@
         // Atividade 5: sort em ordem descrescente de nota
         echo "<p>Notas em ordem descrescente</p>";
 
-        rsort($notas);
-        print_r($notas);
+        // A-Reverse Sort Notas 
+        // arsort() para manter a associação com os índices...
+        arsort($notas);
+        //print_r($notas);
+        /* Array ( 
+            [0002] => 10 
+            [0003] => 9 
+            [0001] => 6 
+            )
+        ) */
+
 
         echo "<table>
         <tr>
@@ -132,25 +146,18 @@
             <th>Nome</th>
             <th>Média Final</th>";
 
-        foreach ($notas as $nota) {
-            // hummm.... se tiver nota repetida essa estratégia não vai funcionar né..
-            // Tem que pensar em como vou fazer isso aqui!!
-            // PHP tá me mostrando que eu sou burrinha demais
-            //echo $nota;
-            $mat = [array_search($nota, $alunos)];
-            print_r($mat);
-            /*
+        $mat = [];
+        foreach ($notas as $mat => $nota) {
             echo "<tr>
-                    <td>$mat</td>";
-            foreach ($alunos[$mat] as $dado => $valor) {
-                echo "<td>$valor</td>";
+                    <td>".$mat."</td>";
+            foreach ($alunos[$mat] as $dado) {
+                echo "<td>".$dado."</td>";
             }
+//                    <td>".$alunos[$mat]['nome']."</td>
+//                    <td>".$alunos[$mat]['media']."</td>
             echo "</tr>";
-            */
         }
-
-        //echo "</table>";
-
+        echo "</table>";
 
 
     ?>
