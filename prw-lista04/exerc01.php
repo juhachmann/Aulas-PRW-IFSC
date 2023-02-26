@@ -2,7 +2,7 @@
 
     include '../includes/lista04.inc.php';
 
-    empty_form($_POST, 'name');
+    exit_if_empty($_POST, 'name');
 
     $media = average($_POST['n1'], $_POST['n2']);
     echo "<p>A média do/a estudante é: $media</p>";

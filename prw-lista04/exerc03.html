@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 3 - Lista 4</title>
+</head>
+<body>
+    <h1>Converta temperaturas</h1>
+    <form action="exerc03.php" method="post">
+        <fieldset>
+            <legend>
+                Insira os dados da temperatura
+            </legend>
+            <label for="conversao">Escolha o tipo de conversão:</label><br>
+            <input type="radio" name="conversao" id="conversao-toCelsius" value="toCelsius"> Converter de Fahrenheit para Celsius <br>
+            <input type="radio" name="conversao" id="conversao-toFahrenheit" value="toFahrenheit"> Converter de Celsius para Fahrenheit <br>
+            <label for="temp">Temperatua:</label>
+            <input type="number" name="temp" id="temp">
+            <button type="submit">Enviar!</button>
+        </fieldset>
+    </form>
+</body>
+</html>

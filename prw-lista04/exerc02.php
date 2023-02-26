@@ -2,8 +2,6 @@
 
     include '../includes/lista04.inc.php';
 
-    is_the_answer($_POST['idade']);
-
     if (value_in_range($_POST['idade'])) {
         echo "<p>Sua idade é um número válido,<br>";
         if ( can_vote ( $_POST['idade'] ) ) {

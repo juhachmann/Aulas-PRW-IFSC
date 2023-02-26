@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Estoque do Supermercado</h1>
+
+    <form action="exerc02.php" method="post">
+        <fieldset>
+            <legend>Insira os dados do produto</legend>
+
+            <label for="id">ID do produto (único) (alfanumérico): </label>
+            <input type="text" name="id" id="id" required> <br>
+
+            <label for="preco">Preço unitário: </label>
+            <input type="number" name="preco" id="preco" step="0.01" mim="0" required><br>
+
+            <label for="qtd">Quantidade em estoque: </label>
+            <input type="number" name="qtd" id="qtd" min="0" step="1" required><br>
+
+            <label for="perecivel">Classificação do produto:</label>
+            <input type="radio" name="perecivel" id="perecivel" value="1" checked> Perecível <br>
+            <input type="radio" name="perecivel" id="perecivel" value="0"> Não-Perecível <br>
+
+            <label for="description">Descrição do produto</label>
+            <textarea name="description" id="description" cols="30" rows="10"></textarea>
+
+            <button type="submit">Gravar!</button>
+        </fieldset>
+    </form>
+</body>
+</html>
