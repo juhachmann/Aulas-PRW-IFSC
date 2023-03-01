@@ -5,59 +5,94 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notas e vetores</title>
+
+    <style>
+        table {
+            border-collapse: collapse;
+        } 
+        
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+
+        th {
+            background-color: lightgray;
+        }
+    </style>
+
 </head>
 <body>
     <h1>Notas da turma</h1>
 
     <?php
 
-        $st1 = [$_POST["nome1"] => $_POST["nota1"]];
-        $st2 = [$_POST["nome2"] => $_POST["nota2"]];
-        $st3 = [$_POST["nome3"] => $_POST["nota3"]];
+        //print_r ($_POST);
 
-        $arExec01 = [$st1[$_POST["nome1"]], $st2[$_POST["nome2"]], $st3[$_POST["nome3"]]];
+        /* 
+        Array ( 
+            [est1] => Array ( 
+                [nome] => Ju 
+                [nota] => 6 ) 
+            [est2] => Array ( 
+                [nome] => Paulo 
+                [nota] => 10 ) 
+            [est3] => Array ( 
+                [nome] => André 
+                [nota] => 8 ) ) 
+        */
+
+        $dadosEstudantes = [];
+        foreach ($_POST as $student) {
+            $dadosEstudantes[ $student['nome'] ] = $student['nota'];
+        }
+        //print_r($dadosEstudantes);
 
         function avg($array) {
             return array_sum($array) / count($array);
         }
 
-        echo "<p>A média da nota dos estudantes é: " . avg($arExec01) . "</p>";
+        echo "<p>A média da nota dos estudantes é: " . number_format(avg($dadosEstudantes), "2") . "</p>";
         
-
-        $arExec02 = array_merge($st1, $st2, $st3);
+        
         echo "<table>
                 <tr>
                     <th>Estudante</th>
                     <th>Nota</th>
                 </tr>";
-        foreach ($arExec02 as $i => $value) {
+        foreach ($dadosEstudantes as $nome => $nota) {
             echo "<tr>
-                    <td>$i</td>
-                    <td>$value</td>
-                  </tr>";
+                    <td>$nome</td>
+                    <td>$nota</td>
+                </tr>";
         }
         echo "</table>";
 
-        $maiorNota = max($arExec02);
-        echo "<p>A maior nota foi $maiorNota, obtida pelo(s) estudante(s): ";
-        foreach (array_keys($arExec02, $maiorNota) as $i => $value) {
-            echo "<br>- $value";
+
+        $maiorNota = max($dadosEstudantes);
+        echo "<p>A maior nota foi " . number_format($maiorNota, "1") . ", obtida pelo(s) estudante(s): ";
+        foreach (
+            array_keys($dadosEstudantes, $maiorNota) as $nome) {
+            echo "<br>- $nome";
         } 
-        echo "<p>";
+        echo "</p>";
 
 
-        //$arExec03 = 
-        arsort($arExec02);
+        
+        arsort($dadosEstudantes);
         echo "<table>
+                <tr>
+                    <th colspan='2'>Lista Ordenada</th>
+                </tr>
                 <tr>
                     <th>Estudante</th>
                     <th>Nota</th>
                 </tr>";
-        foreach ($arExec02 as $i => $value) {
+        foreach ($dadosEstudantes as $nome => $nota) {
             echo "<tr>
-                    <td>$i</td>
-                    <td>$value</td>
-                  </tr>";
+                    <td>$nome</td>
+                    <td>$nota</td>
+                </tr>";
         }
         echo "</table>";
 

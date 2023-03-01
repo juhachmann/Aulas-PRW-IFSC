@@ -12,10 +12,28 @@
 
     <?php
 
-        if (empty($_POST["idade"])) {
-            echo "<p class='err'>Ocorreu um erro, pois você não definiu a idade.<br>Retorne à página anterior e tente novamente.</p>";
+        DEFINE (
+            'PERC_DESCONTO',  
+                [   1 => 0.00,
+                    2 => 0.05,
+                    3 => 0.07, 
+                ]
+            );
+
+        DEFINE ('DESC_FIDELIDADE', 0.05);
+        
+        foreach ($_POST as $key => $value) {
+            $var = $key;
+            $$var = $value;
         }
-       
+
+        if ( ! isset($idade) ) {
+            exit("Ocorreu um erro, pois você não definiu a idade.<br>Retorne à página anterior e tente novamente.");
+        }       
+
+        echo PERC_DESCONTO[$idade];
+
+        /*
         else {
             $valorCompra = $_POST["compra"];
             $descIdade = $descFidelidade = 0;
@@ -23,6 +41,7 @@
 
             echo "<p>Valor da Compra: R$ $valorCompra</p>";
 
+            // aqui dá de usar um switch case
             if ($idade == 2) {
                 $descIdade = $valorCompra * 0.05;
                 echo "<p>- Desconto para faixa etária entre 55 e 70 anos: R$ $descIdade";
@@ -39,6 +58,7 @@
 
             echo "<p>VALOR FINAL DA COMPRA: R$ " . ($valorCompra - $descIdade - $descFidelidade) . "</p>";
         }
+        */
 
     ?>
 
