@@ -12,26 +12,50 @@
 
     <?php
 
+        // Chaves esperadas [compra: number, idade: int, fidelidade: null ???]
+
         DEFINE (
             'PERC_DESCONTO',  
                 [   1 => 0.00,
                     2 => 0.05,
                     3 => 0.07, 
                 ]
-            );
+            ); //Aqui era pra ser um enum!
 
         DEFINE ('DESC_FIDELIDADE', 0.05);
         
+
+        // Testando usar variável de variável
         foreach ($_POST as $key => $value) {
             $var = $key;
             $$var = $value;
         }
 
-        if ( ! isset($idade) ) {
-            exit("Ocorreu um erro, pois você não definiu a idade.<br>Retorne à página anterior e tente novamente.");
-        }       
 
-        echo PERC_DESCONTO[$idade];
+        // Validação simples dos dados esperados
+        $checkVar = [$compra, $idade]; 
+        foreach ($checkVar as $var) {
+            if ( ! isset($var) ) {
+                exit("Ocorreu um erro, pois você não definiu o/a $var.<br>Retorne à página anterior e tente novamente.");
+            }    
+        }
+
+        // Precisaria ainda validar se o valor da idade corresponde às chaves que foram colocadas ali no vetor PERC_DESCONTO
+     
+        $descontoIdade = $compra * PERC_DESCONTO[$idade];
+        $valorFinal = $compra - $descontoIdade;
+        echo "
+            <p>Valor da compra: $compra</p>
+            <p>Desconto para sua Faixa Etária: R$ $descontoIdade </p>
+        ";
+        
+        if (isset($fidelidade)) {
+            $descFid = $compra * DESC_FIDELIDADE;
+            $valorFinal -= $descFid;
+            echo "<p>Desconto para Cartão Fidelidade: R$ $descFid </p>";
+        }
+
+        echo "<p>Valor Final da Compra: R$ $valorFinal</p>";
 
         /*
         else {
