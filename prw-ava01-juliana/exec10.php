@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="lista1.css">
     <title>Farmácia - Descontos</title>
 </head>
@@ -12,7 +13,7 @@
     <div class="container-geral">
         
         <div class="container-title">
-            <h1>Calcule descontos do cliente</h1>
+            <h1>Descontos do cliente</h1>
         </div>
         
         <div class="container-body">
@@ -25,6 +26,7 @@
 
             <div class="content">
 
+
                 <?php
 
                     DEFINE (
@@ -33,56 +35,68 @@
                                 1 => 0.05,
                                 2 => 0.07, 
                             ]
-                        ); 
+                    ); 
                     //Mostrando o índice numérico apenas para legibilidade
 
 
-                    DEFINE ('DESC_FIDELIDADE', 
+                    DEFINE (
+                        'DESC_FIDELIDADE', 
                             [
                                 0 => 0.00,
                                 1 => 0.05
                             ]
-                        );
+                    );
                     
 
                     $fidelidade = 0;
 
 
                     // Testando usar 'variável de variável'
+                    // -- Variáveis geradas: $compra, $idade
+                    // -- $fidelidade já foi declarada, mas pode ter recebido outro valor se veio no Request
                     foreach ($_POST as $key => $value) {
                         $var = $key;
                         $$var = $value;
                     }
+                    
 
 
                     // Validações e tratamento de erros simples
 
+                    // Mensagem de Erro Padrão:
                     $errorMsg = "<div class='msg error-msg'>
                                     <p>Oooops...</p>
-                                    <p>%ERROR%!</p>
+                                    <p>%MOTIVO%!</p>
                                     <p>Retorne à página anterior e tente novamente.</p>
                                 </div>";
-                    // para compra
-                    // (HTML já está checando...)
+                    
+                    // Validar $compra
+                    // -- (HTML já está checando, mas vou deixar redundante)
                     if ( empty($compra) || $compra < 0.01) {
-                        exit(str_replace('%ERROR%', 'O valor da compra está incorreto', $errorMsg));
+                        exit(str_replace('%MOTIVO%', 'O valor da compra está incorreto', $errorMsg));
                     }    
                     
-                    // para idade (pegando erro na lógica do PHP)
+                    // Validar $idade 
                     if ( ! isset ($idade)) {
-                        exit(str_replace('%ERROR%', 'Você não informou a faixa etária do cliente', $errorMsg));
+                        exit(str_replace('%MOTIVO%', 'Você não informou a faixa etária do cliente', $errorMsg));
                     }
 
-                    // para fidelidade (pegando erro na lógica do PHP)
+                    // Validar $fidelidade (pegando erro na lógica do PHP)
                     if ( ! array_key_exists ($fidelidade, DESC_FIDELIDADE)) {
-                        exit(str_replace('%ERROR%', 'valor do Desconto Fidelidade está indefinido', $errorMsg));
+                        exit(str_replace('%MOTIVO%', 'valor do Desconto Fidelidade está indefinido', $errorMsg));
                     }
 
 
+
+                    // Cálculo Descontos existentes
                     $descIdade = $compra * DESC_IDADE[$idade];
                     $descFid = $compra * DESC_FIDELIDADE[$fidelidade];
 
 
+
+                    // Array para gerar saída de dados
+                    // -- Deixei assim para organizar o código
+                    // -- Mas acho que ficou mais devagar..
                     $relatorioFinal = [
                         "compra" => [
                             "texto" => "Valor Inicial",
@@ -95,6 +109,10 @@
                         "descFid" => [
                             "texto" => "- Desconto Fidelidade (". (DESC_FIDELIDADE[$fidelidade] * 100) . "%)",
                             "valor" => $descFid,
+                        ],
+                        "descTot" => [
+                            "texto" => "Total de Descontos",
+                            "valor" => $descIdade + $descFid,
                         ],
                         "valorFinal" => [
                             "texto" => "Valor Final da Compra",
@@ -126,7 +144,8 @@
                     // Primeira versão 
                     // mais 'direta', mas com repetições
                     // Fui tentando deixar mais automatizada depois...
-                    // Não pede validação de 'idade' pq o HTML já valida
+
+                    // Professor, deixei aqui para sua conferência, caso possa ajudar na avaliação! Obrigada!
 
                     DEFINE ('DESC_IDADE_1', 0.05);
                     DEFINE ('DESC_IDADE_2', 0.07);
@@ -138,6 +157,10 @@
 
                     if (empty($valorCompra) || $valorCompra < 0.01) {
                         exit('O valor da compra não pode ser nulo. <br>Volte à página anterior e preencha o valor da compra.');
+                    }
+
+                    if (! isset($faixaEtaria)) {
+                        exit('A faixa etária não pode ser nula. <br>Volte à página anterior e escolha a faixa etária do cliente.');
                     }
                     
                     echo "<p><span class='bold'>Sua Compra</span></p>

@@ -3,12 +3,12 @@ body {
     margin: auto;
     font-family: 'Open Sans', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Sans Unicode', 'Verdana', sans-serif;
     background-color: rgb(209, 255, 236);
-    padding: 2%;
 }
 
 .container-geral {
     margin: auto;
-    width: 70%;
+    margin-top: 3%;
+    width: 60%;
     position: relative;
 }
 
@@ -28,7 +28,7 @@ body {
 
 .container-geral .container-body {
     background-color: rgba(255, 255, 255, 0.5);
-    padding: 30px;
+    padding: 3%;
     position: relative;
     min-height: 18em;
     /* background-image: url('pharmacy2.png');
@@ -38,9 +38,9 @@ body {
 }
 
 .container-geral .container-body .content {
-    width: 60%;
+    width: 55%;
     padding: 2%;
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.7);
     position: relative;
     z-index: 2;
 }
@@ -59,8 +59,11 @@ body {
 
 .container-geral .container-body .content legend {
     margin-bottom: 3%;
-    color: rgb(63, 63, 63);
-    text-shadow: 1px 1px 1px rgb(151, 151, 151);
+    display: block;
+    width: 90%;
+    background:  rgba(128,176,65, 0.25);
+    padding: 2%;
+    font-weight: bold;
 }
 
 .container-geral .container-body .content .field {
@@ -85,6 +88,7 @@ body {
 }
 
 .container-geral .container-body .content .button {
+    margin-top: 5%;
     text-align: center;
 }
 
@@ -122,8 +126,8 @@ body {
 .container-geral .container-body .image {
     z-index: 1;
     position: absolute;
-    top: 3%;
-    right: 1%;
+    top: 5%;
+    right: 4%;
 }
 
 .container-geral .container-body .content .msg p {
