@@ -12,18 +12,27 @@
 
     <?php
 
-        // Chaves esperadas [compra: number, idade: int, fidelidade: null ???]
 
         DEFINE (
-            'PERC_DESCONTO',  
-                [   1 => 0.00,
-                    2 => 0.05,
-                    3 => 0.07, 
+            'DESC_IDADE',  
+                [   0 => 0.00,
+                    1 => 0.05,
+                    2 => 0.07, 
                 ]
-            ); //Aqui era pra ser um enum!
+            ); 
+        //Mostrando o índice numérico apenas para legibilidade
 
-        DEFINE ('DESC_FIDELIDADE', 0.05);
+
+        DEFINE ('DESC_FIDELIDADE', 
+                [
+                    0 => 0.00,
+                    1 => 0.05
+                ]
+            );
         
+
+        $fidelidade = 0;
+
 
         // Testando usar variável de variável
         foreach ($_POST as $key => $value) {
@@ -32,56 +41,104 @@
         }
 
 
-        // Validação simples dos dados esperados
-        $checkVar = [$compra, $idade]; 
-        foreach ($checkVar as $var) {
-            if ( ! isset($var) ) {
-                exit("Ocorreu um erro, pois você não definiu o/a $var.<br>Retorne à página anterior e tente novamente.");
-            }    
-        }
-
-        // Precisaria ainda validar se o valor da idade corresponde às chaves que foram colocadas ali no vetor PERC_DESCONTO
-     
-        $descontoIdade = $compra * PERC_DESCONTO[$idade];
-        $valorFinal = $compra - $descontoIdade;
-        echo "
-            <p>Valor da compra: $compra</p>
-            <p>Desconto para sua Faixa Etária: R$ $descontoIdade </p>
-        ";
+        // Validações simples
+        // para compra
+        if ( empty($compra) || $compra < 0.01) {
+            exit("Ocorreu um erro, pois o valor da compra está incorreto ou indefinido.<br>Retorne à página anterior e tente novamente.");
+        }    
         
-        if (isset($fidelidade)) {
-            $descFid = $compra * DESC_FIDELIDADE;
-            $valorFinal -= $descFid;
-            echo "<p>Desconto para Cartão Fidelidade: R$ $descFid </p>";
+        // para idade 
+        if ( ! array_key_exists ($idade, DESC_IDADE)) {
+            exit("Ocorreu um erro com a idade informada.<br>Retorne à página anterior e tente novamente.");
         }
 
-        echo "<p>Valor Final da Compra: R$ $valorFinal</p>";
+        // para fidelidade
+        if ( ! array_key_exists ($fidelidade, DESC_FIDELIDADE)) {
+            exit("Ocorreu um erro com o valor do Desconto Fidelidade.<br>Retorne à página anterior e tente novamente.");
+        }
 
+
+        $descIdade = $compra * DESC_IDADE[$idade];
+        $descFid = $compra * DESC_FIDELIDADE[$fidelidade];
+
+
+        $relatorioFinal = [
+            "compra" => [
+                "texto" => "Valor da compra",
+                "param" => "",
+                "valor" => $compra,
+            ],
+            "descIdade" => [
+                "texto" => "- Desconto Faixa Etária",
+                "param" => " (". (DESC_IDADE[$idade] * 100) . "%)",
+                "valor" => $descIdade,
+            ],
+            "descFid" => [
+                "texto" => "- Desconto Fidelidade",
+                "param" => " (". (DESC_FIDELIDADE[$fidelidade] * 100) . "%)",
+                "valor" => $descFid,
+            ],
+            "valorFinal" => [
+                "texto" => "Valor Final da Compra",
+                "param" => "",
+                "valor" => $compra - $descIdade - $descFid,
+            ],
+        ];
+
+
+       
+       // Saída de Dados em formato tabular
+        echo "<table>
+                <tr>
+                    <th colspan='2'>Sua compra</th>
+                </tr>";
+        foreach ($relatorioFinal as $dados) {
+            echo "<tr>
+                    <td>". $dados['texto'] . $dados['param'] ."</td>
+                    <td>R$ " . number_format($dados['valor'], "2", ",", "") . "</td>
+                  </tr>";
+        }
+        echo "</table>";
+      
+
+
+
+        
         /*
-        else {
-            $valorCompra = $_POST["compra"];
-            $descIdade = $descFidelidade = 0;
-            $idade = $_POST["idade"];
+        // Primeira versão 
+        // mais 'direta', mas com repetições
+        // Não pede validação de 'idade' pq o HTML já valida
 
-            echo "<p>Valor da Compra: R$ $valorCompra</p>";
 
-            // aqui dá de usar um switch case
-            if ($idade == 2) {
-                $descIdade = $valorCompra * 0.05;
-                echo "<p>- Desconto para faixa etária entre 55 e 70 anos: R$ $descIdade";
-            }
-            elseif ($idade == 3) {
-                $descIdade = $valorCompra * 0.07;
-                echo "<p>- Desconto para faixa etária acima de 70 anos: R$ $descIdade";
-            }
-            
-            if (array_key_exists("fidelidade", $_POST)) {
-                $descFidelidade = $valorCompra * 0.05;
-                echo "<p>- Desconto para pagamento com Cartão Fidelidade: $descFidelidade</p>";
-            }
+        $valorCompra = $_POST['compra'];
+        $faixaEtaria = $_POST['idade'];
+        $valorFinal = $valorCompra;
 
-            echo "<p>VALOR FINAL DA COMPRA: R$ " . ($valorCompra - $descIdade - $descFidelidade) . "</p>";
+        if (empty($valorCompra) || $valorCompra < 0.01) {
+            exit('O valor da compra não pode ser nulo. <br>Volte à página anterior e preencha o valor da compra.');
         }
+
+        
+        echo "<p>Valor da Compra: R$ " . number_format($valorCompra, "2", ",", "") . "</p>";
+
+        if ($faixaEtaria == 1) {
+            $descIdade = $valorCompra * 0.05;
+            $valorFinal -= $descIdade;
+            echo "<p>- Desconto Faixa Etária (5%): R$ " . number_format($descIdade, "2", ",", "") . "</p>";
+        }
+        elseif ($faixaEtaria == 2) {
+            $descIdade = $valorCompra * 0.07;
+            $valorFinal -= $descIdade;
+            echo "<p>- Desconto Faixa Etária (7%): R$ " . number_format($descIdade, "2", ",", "") . "</p>";
+        }
+
+        if ( isset ( $_POST['fidelidade'] ) ) {
+            $descFidelidade = $valorCompra * 0.05;
+            echo "<p>- Desconto Cartão Fidelidade (5%): R$ " . number_format($descFidelidade, "2", ",", "") . "</p>";
+            $valorFinal -= $descFidelidade;
+        }
+
+        echo "<p>Valor Final da Compra: R$ ". number_format($valorFinal, "2", ",", "") . "</p>";
         */
 
     ?>

@@ -16,7 +16,7 @@
         <fieldset>
             <legend>Valor da Compra</legend>
             <label>Valor Total (R$):</label>
-            <input type="number" name="compra" step="0.1" autofocus>
+            <input type="number" name="compra" min="0.01" step="0.01" required autofocus>
         </fieldset>
     
         <fieldset>
@@ -26,7 +26,7 @@
             <input type="radio" name="idade" value="1"> Entre 55 e 70 anos <br>
             <input type="radio" name="idade" value="2"> Acima de 70 anos <br><br>
             <p><label>Usuários de Cartão Fidelidade:</label><br>
-            <input type="checkbox" name="fidelidade"> Pagamento com Cartão Fidelidade </p> 
+            <input type="checkbox" name="fidelidade" value="1"> Pagamento com Cartão Fidelidade </p> 
         </fieldset>
     
         <button type="submit">Calcular</button>
