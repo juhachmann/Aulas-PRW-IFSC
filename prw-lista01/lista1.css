@@ -5,58 +5,97 @@ body {
     padding: 2%;
 }
 
-
-h1 {
+.container-geral {
     margin: auto;
-    font-weight: bold;
-    font-size: large;
-    opacity: 0.9;
+    width: 60%;
+}
+
+.container-geral .container-title {
+    margin-bottom: 2%;
+    border: 1px solid rgba(20, 87, 40, 0.993);
+    background-color: rgb(152, 231, 198);
+}
+
+.container-geral .container-title h1 {
     text-align: center;
-    margin-top: 3%;
+    font-size: large;
+    font-weight: bold;
+    color: rgba(85, 85, 85, 0.993);
+}
+
+.container-geral .container-body {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 30px;
+    background-image: url('pharmacy.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right;
+}
+
+.content {
+    width: 60%;
+    padding: 2%;
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.content fieldset {
+    width: 100%;
+    border: none; 
+}
+
+.content legend {
     margin-bottom: 3%;
 }
 
-
-fieldset {
-    width: 50%;
-    margin: auto;
-    background-color: rgba(255, 255, 255, 0.5);
-    padding: 3%;
-}
-
-
-legend {
-    font-size: large;
-    font-variant: small-caps;
-}
-
-
-label {
-    display: inline-block;
+.content .field {
+    margin-bottom: 5%;
     text-align: left;
-    width: 35%;
-    margin-bottom: 2%;
 }
 
-
-button {
+.content .field label {
     display: block;
-    margin: auto;
-    margin-top: 3%;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: rgba(85, 85, 85, 0.993);
 }
 
+.content .field .radio-option {
+    margin-bottom: 0%;
+    text-align: left;
+}
 
-p {
-    margin: auto;
+.content .field.special {
+    font-weight: 600;
+    color: rgba(85, 85, 85, 0.993);
+}
+
+.content .button {
     text-align: center;
-    width: 40%;
+}
+
+.content table {
+    border-collapse: collapse;
+    margin-bottom: 3%;
+    width: 100%;
+}
+
+.content tr {
     border: 1px solid black;
-    padding: 0.5%;
-    background-color:  rgb(122, 197, 166);
+}
+
+.content td {
+    margin-left: 10px;
+}
+
+.content p {
+    text-align: center;
+    border: 1px solid black;
+    margin-bottom: 0px;
+    margin-top: 0px;
 }
 
 
-.err {
+.alert {
     color: red;
 }
 

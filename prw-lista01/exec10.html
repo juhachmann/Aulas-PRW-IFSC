@@ -9,29 +9,56 @@
 </head>
 <body>
 
-    <h1>Calcular meus descontos na Farmácia</h1>
+    <div class="container-geral">
+        <div class="container-title">
+            <h1>Calcule seus descontos na Farmácia</h1>
+        </div>
+        
+        <div class="container-body">
 
-    <form action="exec10.php" method="post">
+            <div class="content">
+
+                <form action="exec10.php" method="post">      
+                    <fieldset>
+                        <legend>Insira os dados da sua compra</legend>
+                        
+                        <div class="field">
+                            <label>Valor Total (R$):</label>
+                            <input type="number" name="compra" min="0.01" step="0.01" required autofocus>    
+                        </div>
+                    
+                        <div class="field">
+                            <label>Qual sua faixa etária?</label>
+                            <div class="radio-option">
+                                <input type="radio" name="idade" value="0" checked> Tenho menos de 55 anos
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" name="idade" value="1"> Tenho entre 55 e 70 anos 
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" name="idade" value="2"> Tenho mais de 70 anos 
+                            </div>   
+                        </div>
+                        
+
+                        <div class="field special">
+                            <input type="checkbox" name="fidelidade" value="1"> Irei pagar com meu Cartão Fidelidade
+                        </div>
+
+                    </fieldset>
+
+                    <div class="button">
+                        <button type="submit">Enviar</button>
+                    </div>
+
+                </form>
+            
+            </div>
+
+        </div>       
+
+    </div>
     
-        <fieldset>
-            <legend>Valor da Compra</legend>
-            <label>Valor Total (R$):</label>
-            <input type="number" name="compra" min="0.01" step="0.01" required autofocus>
-        </fieldset>
-    
-        <fieldset>
-            <legend>Informações sobre o Cliente</legend>
-            <p><label>Faixa etária do cliente: <span class="alert alert-danger">* Informação Obrigatória</span></label></p>
-            <input type="radio" name="idade" value="0" checked> Abaixo de 55 anos<br>
-            <input type="radio" name="idade" value="1"> Entre 55 e 70 anos <br>
-            <input type="radio" name="idade" value="2"> Acima de 70 anos <br><br>
-            <p><label>Usuários de Cartão Fidelidade:</label><br>
-            <input type="checkbox" name="fidelidade" value="1"> Pagamento com Cartão Fidelidade </p> 
-        </fieldset>
-    
-        <button type="submit">Calcular</button>
-    
-    </form>
 
 </body>
 </html>
