@@ -19,7 +19,7 @@
             return print("<pre>".print_r($array,true)."</pre>");
         }
 
-        pprint_r($_POST);
+        pprint($_POST);
 /*
         Array ( 
             [est1] => Array ( 
@@ -58,6 +58,15 @@
                 [nome] => André 
                 [media] => 9 ) 
             ) 
+        */
+
+        /*não entendi.. não funciona!
+        foreach ($alunos as $mat => [
+                            ['nome'] => $nome,
+                            ['media'] => $media,
+                            ]) {
+            echo "Mat.: $mat, Nome: $nome, Media: $media";
+        }
         */
 
         echo "<table>
