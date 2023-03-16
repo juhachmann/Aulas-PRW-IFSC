@@ -49,9 +49,23 @@
     $nome = $_POST['name'];
     $media = $_POST['media'];
 
+    // SINTAXE padrão de conexão usando o mysqli
+    // new mysqli(servidor, user, senha, banco de dados (opcional))
 
-    $conexao = new mysqli('localhost', 'root', '');
+    $server = 'localhost';
+    $user = 'root';
+    $password = '';
+    $db = '';
+
+    $conexao = new mysqli($server, $user, $password);
     
+    // Cada conexão é uma instância nova da classe mysqli, com seus métodos próprios
+
+    // Sintaxe das queries
+    // define como string normal
+    // tenta executar e pega o resultado
+    // conexão->query(sql) or die(conexão->erro)
+
     $sql = 'CREATE DATABASE IF NOT EXISTS prw';
     $resultado = $conexao->query($sql) or die($conexao->error);
     //print($resultado); (1)
@@ -80,7 +94,23 @@
 
     $sql = "SELECT * FROM media_alunos";
     $resultado = $conexao->query($sql) or die($conexao->error);
+
+    var_dump($resultado);
+    /*
+    object(mysqli_result)[2]
+        public 'current_field' => int 0
+        public 'field_count' => int 3
+        public 'lengths' => null
+        public 'num_rows' => int 2
+        public 'type' => int 0
+    */
+    
     $resultArray = $resultado->fetch_all(MYSQLI_ASSOC); // Foi!
+
+    // O que é isso aqui????
+    // fetch_all transforma em... uma array associativa!
+
+
     //pprint($resultArray); 
 
 /* 

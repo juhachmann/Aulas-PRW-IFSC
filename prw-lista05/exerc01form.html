@@ -16,22 +16,52 @@
             </legend>
             
 
-            <label for="matricula">Matrícula (ID único):</label>
-            <input type="text" name="matricula" id="matricula"><br>
+            <div class="main-div">
 
+                <div class="create-form">
+                    <label for="matricula">Matrícula (ID único):</label>
+                    <input type="text" name="matricula" id="matricula"><br>
+                    <label for="name">Nome do estudante:</label>
+                    <input type="text" name="name" id="name"><br>
+                    <label for="media">Média em PRW:</label>
+                    <input type="number" name="media" id="media" min="0" max="10" step="0.5"><br>
+                </div>
+                
+                <button class="gravar" type="submit">Gravar!</button>
 
-            <label for="name">Nome do estudante:</label>
-            <input type="text" name="name" id="name"><br>
+                <button class="engage" onclick="
+                            event.preventDefault();
+                            clone();">+ Novo Aluno</button>
 
+            </div>
 
-            <label for="media">Média em PRW:</label>
-            <input type="number" name="media" id="media" min="0" max="10" step="0.5"><br>
-
-            <button type="submit">Gravar!</button>
+            
 
         </fieldset>
 
     </form>
+
+    <script type="text/javascript">
+        
+        const div = document.querySelector('.main-div');
+        const button = document.querySelector('.engage');
+        const gravar = document.querySelector('gravar');
+        button.addEventListener('click', function () {
+            const form = document.querySelect('.create-form');
+            const cloneForm = form.cloneNode(deep);
+            div.insertBefore(cloneForm, gravar);
+        });
+
+
+        function clone () {
+            let div = document.querySelector('.main-div');
+            let gravar = document.querySelector('gravar');
+            let form = document.querySelect('.create-form');
+            let cloneForm = form.cloneNode(deep);
+            div.insertBefore(cloneForm, gravar);
+        }
+
+    </script>
 
 </body>
 </html>
