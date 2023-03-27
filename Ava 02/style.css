@@ -1,0 +1,178 @@
+
+/* Gerais  */
+
+@media (max-width: 768px) {
+    .form-header {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .hidden {
+        display: none;
+    }
+
+}
+
+
+
+/* Para que botões e ícones do Bootsrap passem na validação do HTML5 */
+.hide-this {
+    display: none;
+}
+
+
+
+/* Navbar */
+
+.navbar {
+    background-color: #2e344a;
+    color: #78858e;
+    padding: 0;
+}
+
+.navbar a {
+    color: #c2c6ce;
+}
+
+.navbar a:hover {
+    color: #78858e;
+}
+
+.navbar a:active {
+    color: #78858e;
+}
+
+
+
+/* Título da Página  */
+
+.page-title { 
+    background-color: rgba(46, 52, 74, 0.8);
+    padding: 0.6%;
+}
+
+.page-title h1 {
+    color: #c2c6ce;
+    font-size: x-large;
+    text-align: center;
+}
+
+
+
+/* Main Div */
+.row {
+    margin: 0;
+}
+
+#main{
+    padding: 0;
+    margin-top: 1%;
+}
+
+
+
+/* Ícones de adicionar e remover itens do formulário  */
+.action-icons {
+    text-align: end;
+    margin: 1% 0;
+    padding-right: 1%;
+}
+
+.icons {
+    font-size: 1.5em;
+    color: #051321;
+    width: 40px;
+}
+
+.add-icon:hover {
+    color:#627ee2;
+}
+
+.remove-icon:hover {
+    color:  rgb(255, 128, 128);
+}
+
+
+/* Formulário */
+.container-fluid.formulario {
+    padding: 0;
+}
+
+.form-header {
+    font-weight: bold;
+    color: #051321;
+}
+
+.form-control.is-invalid, .was-validated .form-control:invalid {
+    background-image: none;
+}
+
+.form-control.is-valid, .was-validated .form-control:valid {
+    background-image: none;
+}
+
+.invalid-feedback {
+    color: rgb(255, 128, 128);
+}
+
+.form-group {
+    padding: 5px;
+}
+
+.row-number {
+    color: grey;
+    text-align: center;
+}
+
+button[type="submit"] {
+    display: block;
+    margin: 3% auto;
+}
+
+
+
+/* Tabelas e Resultados  */
+
+.table {
+    width: 70%;
+    margin: 3% auto;
+    color:#051321;
+}
+
+.car-table thead .column-title th {
+    color: rgba(46, 52, 74, 1);
+    background-color:rgba(177, 189, 197, 0.5);
+}
+
+.car-table tfoot {
+    background-color:rgba(177, 189, 197, 0.1);
+    font-weight: 500;
+    color:rgba(46, 52, 74, 1);
+} 
+
+.car-table tfoot tr td:first-child {
+    text-align: end;
+} 
+
+tfoot.table-group-divider {
+    border-top-color :rgba(177, 189, 197, 1);
+}
+
+.result-table {
+    background-color:rgba(177, 189, 197, 0.2);
+    font-weight: 500;
+    text-align: center;
+    color:rgba(46, 52, 74, 1);
+}
+
+.error-msg {
+    color: rgb(153, 15, 15);
+    font-weight: bold;
+    text-align: center;
+}
+
+.alert {
+    width: 70%;
+    margin: auto;
+}
