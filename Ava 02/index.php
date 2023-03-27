@@ -1,4 +1,4 @@
-<!-- Aqui é o index, funcionando como um protótipo de 'template' -->
+<!-- Aqui é o index, funcionando como um protótipo de 'template' bem simples -->
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -64,7 +64,7 @@
                a lógica para guardar os dados do formulário
                dependendo do tipo do request. 
 
-                Achei a solução na net. Pesquisar se é seguro!
+                Achei a solução na net. Preciso pesquisar se é seguro!
             */
 
             if (filter_input(INPUT_SERVER, 'REQUEST_METHOD') === 'GET') {
@@ -82,7 +82,6 @@
     </div>    
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
 
 </body>
 </html>

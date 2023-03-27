@@ -11,7 +11,7 @@
     
     <link rel="stylesheet" href="style.css">
     
-    <title>Concessionária</title>
+    <title>Concessionária - Cadastro de Veículos</title>
 </head>
 <body>
 
@@ -20,7 +20,7 @@
         <div class="container-fluid">
             
             <a class="navbar-brand" href="avaliativo02.html">
-                <img src="img/logo-small.png" alt="Logo da Concessionária">
+                <img src="logo-small.png" alt="Logo da Concessionária">
             </a>
         
             <!-- Botão que só aparece quando colapsa -->
@@ -69,29 +69,10 @@
                 $treated = htmlspecialchars($treated);
                 return $treated;
             }
-            // o echo, por algum motivo, imprime na tela tirando os espaços extra, mas na variável continuava
-            // com o str_replace() dá de tirar!
-            // o echo tbm imprime convertendo caracteres especiais de volta para símbolos html
-            // mas no banco vai ficar salvo do jeito mais seguro
-
-            $float = 0;
-            var_dump(filter_var($float, FILTER_VALIDATE_FLOAT));
-
-            if (! filter_var($float, FILTER_VALIDATE_FLOAT)) {
-                echo "Entrou aqui....";
-            }
-
-            $float = 5;
-            var_dump(filter_var($float, FILTER_VALIDATE_FLOAT));
-
-            if (! filter_var($float, FILTER_VALIDATE_FLOAT)) {
-                echo "Entrou aqui de novo....";
-            }
-
 
             DEFINE ('FABRICANTE_PESQUISA', 'Fiat');
             
-            DEFINE ('REGEX_FILTERS', [ // Bruxarias (não entendi o .)
+            DEFINE ('REGEX_FILTERS', [ // Bruxarias 
                 'chassi' => " /^([a-zA-Z0-9]{5,}).*/ ",
                 'fabricante' => ' /^([a-zA-Z]{3,}).*/ ',
             ]);
@@ -103,8 +84,8 @@
                         </div>";
 
 
-            // a) Registrando os dados do veículo em matriz usando o chassi como índice associativo
-            // Vamos validar e guardar dentro do mesmo loop
+            // A) Registrando os dados do veículo em matriz usando o chassi como índice associativo
+            // Vamos validar e guardar no mesmo loop
             $cars = [];
             $i = 0;
 
@@ -128,7 +109,6 @@
                 }
 
                 $preco = tratar($car['preco']);
-                var_dump($preco);
                 if ( ! filter_var($preco, FILTER_VALIDATE_FLOAT) || $preco < 0) {
                     if ($preco != 0) {
                       exit ( str_replace('%MOTIVO%', "formulário n# $i, campo: preço", $errorMsg) ); // error
@@ -141,9 +121,8 @@
                     'preco' => $preco
                 ];
             }
-            var_dump($cars);
 
-            // b) Verificando quantos carros da Marca Fiat estão cadastrados na matriz
+            // B) Verificando quantos carros da Marca Fiat estão cadastrados na matriz
             // Usando métodos de arrays:
             // array_columns()
             // array_count_values()
@@ -156,12 +135,13 @@
             }
 
 
-            // c) Calculando o preço médio de venda 
+            // C) Calculando o preço médio de venda 
             $mediaPrecos = avg(array_column($cars, 'preco'));
 
 
             // SAÍDAS
 
+            // Alerta de sucesso do Bootstrap
             echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
                     Veículos cadastrados com sucesso!
                     <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'> <span class='hide-this'> Botão de fechar </span> </button>
@@ -194,13 +174,14 @@
             echo "</tbody>
                     <tfoot class='table-group-divider'>
                         <tr>
-                            <td colspan = '3'>Média de preço: </td>
+                            <td colspan = '3'>Média de preços: </td>
                             <td>R$ " . number_format($mediaPrecos, "2", ",", "") . "</td>
                         </tr>
                     </tfoot>
                    </table>
                   </div>";
             
+                  
             // Saída Pesquisa
             echo "<table class='table result-table'>
                     <tr>

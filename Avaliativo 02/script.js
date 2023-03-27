@@ -14,6 +14,20 @@ const formRows = document.querySelector('#form-rows');
 const mainForm = document.querySelector('#mainForm');
 
 
+
+function modifyInputs(parentDiv) {
+    let inputNames = ['chassi', 'fabricante', 'preco'];
+
+    inputNames.forEach(function(inputName) {
+        let div = parentDiv.querySelector('.'+ inputName);
+        let input = div.querySelector('.'+inputName);
+        input.value = "";
+        input.name = 'car' + carNum + '[' + inputName + ']';
+    });
+}
+
+
+
 function addCar() { 
 
     if (carNum === 10) {
@@ -31,20 +45,12 @@ function addCar() {
     let rowNumber = clonedContainer.childNodes[1];
     rowNumber.textContent = carNum;
 
-    let inputChassi = clonedContainer.childNodes[3].childNodes[3];
-    let inputFab = clonedContainer.childNodes[5].childNodes[3];
-    let inputPrice = clonedContainer.childNodes[7].childNodes[3];
-
-    let inputs = [inputChassi, inputFab, inputPrice];
-    inputs.forEach(input => input.value = "");
-
-    inputChassi.name = 'car' + carNum + '[chassi]';
-    inputFab.name = 'car' + carNum + '[fabricante]';
-    inputPrice.name = 'car' + carNum + '[preco]';
+    modifyInputs(clonedContainer);
 
     formRows.appendChild(clonedContainer);
 
 }
+
 
 
 function removeCar() {
@@ -52,15 +58,8 @@ function removeCar() {
     let lastCar = formRows.lastElementChild;
 
     if (carNum === 1) {
-        let inputChassi = lastCar.childNodes[3].childNodes[3];
-        let inputFab = lastCar.childNodes[5].childNodes[3];
-        let inputPrice = lastCar.childNodes[7].childNodes[3];
-    
-        let inputs = [inputChassi, inputFab, inputPrice];
-        inputs.forEach(input => input.value = "");
-        
+        modifyInputs(lastCar);        
         mainForm.classList.remove('was-validated');
-
         return false;
     }
 

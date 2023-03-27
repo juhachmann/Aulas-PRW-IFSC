@@ -51,11 +51,13 @@
                         <label for="fabricante" class="form-label hidden">Fabricante: </label>
                         <input type="text" class="form-control input-fab" name="car1[fabricante]" list="fabricantes" autocomplete="off" pattern="^([a-zA-Z]{3,}).*" title="Deve iniciar com 3 letras" required>
                         <datalist id="fabricantes">
+                        
                         <?php
                             foreach(LISTA_FABRICANTES as $fabricante) {
                                 echo "<option value='$fabricante'>";
                             }
                         ?>
+                        
                         </datalist>
                         <div class="form-text invalid-feedback">* Deve iniciar com 3 letras</div>
                     </div>    
@@ -82,3 +84,6 @@
         </form>
 
     </div>
+
+    <script src="script.js"></script>
+

@@ -153,6 +153,7 @@ button[type="submit"] {
 
 .car-table tfoot tr td:first-child {
     text-align: end;
+    text-transform: uppercase;
 } 
 
 tfoot.table-group-divider {
