@@ -16,7 +16,7 @@
 
 
 
-/* Para que botões e ícones do Bootsrap passem na validação do HTML5 */
+/* Para que os ícones do Bootsrap passem na validação do HTML5 =( */
 .hide-this {
     display: none;
 }
@@ -81,7 +81,7 @@
 
 .icons {
     font-size: 1.5em;
-    color: #051321;
+    color: #4a4b4d;
     width: 40px;
 }
 
@@ -135,8 +135,7 @@ button[type="submit"] {
 /* Tabelas e Resultados  */
 
 .table {
-    width: 70%;
-    margin: 3% auto;
+    margin: 5% auto;
     color:#051321;
 }
 
@@ -146,14 +145,12 @@ button[type="submit"] {
 }
 
 .car-table tfoot {
-    background-color:rgba(177, 189, 197, 0.1);
-    font-weight: 500;
-    color:rgba(46, 52, 74, 1);
+    background-color:rgba(80, 163, 218, 0.1);
+    font-weight: 400;
 } 
 
 .car-table tfoot tr td:first-child {
-    text-align: end;
-    text-transform: uppercase;
+    text-align: center;
 } 
 
 tfoot.table-group-divider {
@@ -161,10 +158,9 @@ tfoot.table-group-divider {
 }
 
 .result-table {
-    background-color:rgba(177, 189, 197, 0.2);
-    font-weight: 500;
+    color: rgba(46, 52, 74, 1);
+    background-color:rgba(199, 217, 230, 0.1);
     text-align: center;
-    color:rgba(46, 52, 74, 1);
 }
 
 .error-msg {
@@ -174,6 +170,5 @@ tfoot.table-group-divider {
 }
 
 .alert {
-    width: 70%;
     margin: auto;
 }

@@ -1,12 +1,18 @@
 
+
 // Botões de Adicionar e Remover Itens
-// que meleca
 
-const addIcons = document.querySelectorAll('.add-icon');
-addIcons.forEach(icon => icon.addEventListener('click', addCar));
 
-const removeIcons = document.querySelectorAll('.remove-icon');
-removeIcons.forEach(icon => icon.addEventListener('click', removeCar));
+(function() { // adiciona os event listeners
+    let addIcons = document.querySelectorAll('.add-icon');
+    addIcons.forEach(icon => icon.addEventListener('click', addCar));
+    
+    let removeIcons = document.querySelectorAll('.remove-icon');
+    removeIcons.forEach(icon => icon.addEventListener('click', removeCar));
+
+})()
+
+
 
 let carNum = 1;
 
@@ -15,12 +21,13 @@ const mainForm = document.querySelector('#mainForm');
 
 
 
-function modifyInputs(parentDiv) {
+function modifyInputs(parent) {
+
     let inputNames = ['chassi', 'fabricante', 'preco'];
 
     inputNames.forEach(function(inputName) {
-        let div = parentDiv.querySelector('.'+ inputName);
-        let input = div.querySelector('.'+inputName);
+        let selector = '.' + inputName + ' input'; // ex: ".chassi input" - primeiro input dentro do div .chassi
+        let input = parent.querySelector(selector);
         input.value = "";
         input.name = 'car' + carNum + '[' + inputName + ']';
     });
@@ -32,22 +39,25 @@ function addCar() {
 
     if (carNum === 10) {
         alert('Máximo de 10 itens por cadastro!');
-        return false;
+        return;
+    }
+
+    if (mainForm.classList.contains('was-validated')) {
+        mainForm.classList.remove('was-validated');
+        return;
     }
 
     carNum++;
-    
-    mainForm.classList.remove('was-validated');
 
-    const targetContainer = document.querySelector('.new-row');
-    const clonedContainer = targetContainer.cloneNode('deep');
+    const form = document.querySelector('.new-row');
+    const newForm = form.cloneNode('deep');
 
-    let rowNumber = clonedContainer.childNodes[1];
+    let rowNumber = newForm.querySelector('.row-number');
     rowNumber.textContent = carNum;
 
-    modifyInputs(clonedContainer);
+    modifyInputs(newForm);
 
-    formRows.appendChild(clonedContainer);
+    formRows.appendChild(newForm);
 
 }
 
@@ -60,7 +70,7 @@ function removeCar() {
     if (carNum === 1) {
         modifyInputs(lastCar);        
         mainForm.classList.remove('was-validated');
-        return false;
+        return;
     }
 
     lastCar.remove();
