@@ -102,20 +102,20 @@
                     'options' => array(
                             'regexp' => REGEX_FILTERS['chassi']
                 )) ) ) {
-                    exit( str_replace('%MOTIVO%', "formulário n# $i, campo: Chassi", $errorMsg) ); // error
+                    exit( str_replace('%MOTIVO%', "Formulário nº #$i, campo: Chassi", $errorMsg) ); // error
                 }
 
-                $fabricante = ucwords(tratar($car['fabricante']));
+                $fabricante = ucwords(strtolower(tratar($car['fabricante'])));
                 if ( ! filter_var ( $fabricante, FILTER_VALIDATE_REGEXP, array(
                     'options' => array(
                         'regexp' => REGEX_FILTERS['fabricante'] )) )) {
-                    exit ( str_replace('%MOTIVO%', "formulário n# $i, campo: fabricante", $errorMsg) ); // error
+                    exit ( str_replace('%MOTIVO%', "Formulário nº #$i, campo: Fabricante", $errorMsg) ); // error
                 }
 
                 $preco = tratar($car['preco']);
                 if ( ! filter_var($preco, FILTER_VALIDATE_FLOAT) || $preco < 0) {
                     if ($preco != 0) {
-                        exit ( str_replace('%MOTIVO%', "formulário n# $i, campo: preço", $errorMsg) ); // error
+                        exit ( str_replace('%MOTIVO%', "Formulário nº #$i, campo: Preço", $errorMsg) ); // error
                 }}
 
 
@@ -132,11 +132,10 @@
             // array_count_values()
             $arrayFabricantes = array_column($cars, 'fabricante');
             $searchValue = ucwords(FABRICANTE_PESQUISA);
-            $searchCount = 0;
 
             if (in_array($searchValue, $arrayFabricantes)) {
                 $searchCount = array_count_values($arrayFabricantes)[$searchValue]; // solução retirada do manual do PHP!! 
-            }
+            } else $searchCount = 0;
 
 
             // c) Calculando o preço médio de venda 
