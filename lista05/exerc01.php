@@ -104,9 +104,11 @@
         public 'num_rows' => int 2
         public 'type' => int 0
     */
+    // Veja bem, os dados mesmo não são campos públicos dentro do objeto...
+    // temos que chamar um método para conseguirmos acessar cada valor
+    // métodos possíveis: fetch_array() ou fetch_all() 
     
     $resultArray = $resultado->fetch_all(MYSQLI_ASSOC); // Foi!
-
     // O que é isso aqui????
     // fetch_all transforma em... uma array associativa!
 
