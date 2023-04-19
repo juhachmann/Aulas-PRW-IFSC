@@ -1,6 +1,6 @@
 <?php
 
-    include '../includes/lista05.inc.php';
+    include 'lista05.inc.php';
 
     /* Comando e bibliotecas que eu aprendi aqui:
         - biblioteca mysqli
