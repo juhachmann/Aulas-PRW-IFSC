@@ -1,7 +1,6 @@
 <?php
  $sql = "CREATE TABLE IF NOT EXISTS $nomeDaTabela(
-          id int not null unique AUTO_INCREMENT PRIMARY KEY,
-          matricula VARCHAR(300),
+          matricula VARCHAR(50) PRIMARY KEY,
           aluno VARCHAR(500),
           media DECIMAL(3,1))";
 

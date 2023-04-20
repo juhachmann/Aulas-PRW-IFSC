@@ -1,6 +1,6 @@
 <?php
 
-    $sql = "SELECT * FROM $nomeDaTabela";
+    $sql = "SELECT * FROM $nomeDaTabela WHERE (SELECT min(estoque) FROM $nomeDaTabela) = estoque;";
 
     $resultado = $conexao->query($sql) or exit($conexao->error);
 
@@ -13,11 +13,13 @@
     if($registros > 0) {
 
         echo "<table>
-                <caption>Relação de alunos cadastrados</caption>
+                <caption>Produto(s) com menor quantidade em estoque </caption>
                 <tr>
-                    <th>Matrícula</th>
-                    <th>Nome</th>
-                    <th>Média Final</th>
+                    <th>Id</th>
+                    <th>Preço</th>
+                    <th>Qtd. em estoque</th>
+                    <th>Perecível?</th>
+                    <th>Descrição</th>
                 </tr>";
 
         while($registro = $resultado->fetch_array(MYSQLI_ASSOC)) {
@@ -44,7 +46,3 @@
     else {
         echo "<p>Não há dados cadastrados!</p>";
     }
-
-
-
-

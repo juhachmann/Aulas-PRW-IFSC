@@ -32,9 +32,15 @@
     <button name="tabular-dados"> Tabular dados dos alunos </button>
 
     <button name="contar-aprovados"> Contar número de alunos aprovados </button>
+
+    <button name="recarregar"> Recarregar </button>
+
    </div> 
   </fieldset>
  </form>
+
+
+ 
 
  <?php
   //var_dump($_POST);
