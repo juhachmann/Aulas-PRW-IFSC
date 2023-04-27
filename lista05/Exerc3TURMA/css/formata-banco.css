@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Sofia+Sans+Condensed&display=swap');
+
+body {
+ font-family: "Sofia Sans Condensed";
+ margin: 0;
+}
+
+h1 {
+ text-align: center;
+ border-bottom: 1px solid #777;
+ background: #ccc;
+ margin: 0;
+}
+
+label.alinha {
+ width: 90px; 
+ display: inline-block;
+ margin-bottom: 15px;
+}
+
+input[name*="aluno"] {
+ width: 300px;
+}
+
+input, button {
+ font-family: Oswald;
+}
+
+button {
+ font-size: 18px;
+ font-weight: bold;
+ width: 500px;
+ margin-left: 10px; 
+}
+
+fieldset {
+ width: 70%;
+ margin: 30px auto;
+ padding-left: 20px;
+ border-radius: 10px; /*arredonda os cantos da caixa*/
+ box-shadow: 5px 5px 5px #bbb;
+ background-color: rgba(220, 220, 220, 0.8);
+}
+
+div.alinha-botoes {
+ text-align: center; /*recurso para alinharmos botões no centro de uma div*/
+}
+
+p {
+ width: 50%;
+ border: 1px solid #777;
+ border-radius: 10px;
+ padding: 20px;
+ margin: 20px auto;
+ text-align: center;
+}
+
+span {
+ font-weight: bold;
+ color: #666;
+ font-style: italic;
+}
+
+table {
+ width: 50%;
+ border: 1px solid #777;
+ border-radius: 5px;
+ background-color: rgba(220, 220, 220, 0.8);
+ margin: 30px auto;
+}
+
+th, td {
+ border: 1px solid #777;
+ border-radius: 5px;
+}
+
+th {
+ background-color: #777;
+ color: #fff;
+}
+
+td {
+ text-align: center;
+}
