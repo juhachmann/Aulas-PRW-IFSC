@@ -9,36 +9,40 @@
 <body> 
  <h1> MySQL + PHP - modelo 4 </h1>
 
- <form action="exercicio4.php" method="post">
+ <form id="medicos" action="exercicio4.php" method="post">
   <fieldset>
    <legend>Cadastro de Médicos</legend>
 
    <label class="alinha"> CRM: </label>
-   <input type="text" name="medico-crm" autofocus placeholder="Forneça o CRM do médico"> <br>
+   <input type="text" name="medico-crm" autofocus placeholder="Forneça o CRM do médico" required> <br>
 
    <label class="alinha"> Nome do médico: </label>
-   <input type="text" name="medico-nome" placeholder="Insira o nome do médico"> <br>
+   <input type="text" name="medico-nome" placeholder="Insira o nome do médico" required> <br>
 
-   <button type="submit" name="cadastrar-medico">Cadastrar Médico</button>
+   <button form="medicos" type="submit" name="cadastrar-medico">Cadastrar Médico</button>
 
   </fieldset>
+</form>
 
+<form id="pacientes" action="exercicio4.php" method="post">
   <fieldset>
     <legend>Cadastro de Consultas</legend>
 
     <label for="paciente-nome" class="alinha">Nome do paciente:</label>
-    <input type="text" name="paciente-nome" placeholder="Insira o nome do paciente"> <br>
+    <input type="text" name="paciente-nome" placeholder="Insira o nome do paciente" required> <br>
 
     <label for="paciente-crm" class="alinha">CRM do médico que o atendeu: </label>
-    <input type="text" name="paciente-crm" placeholder="Insira o CRM do médico que atendeu o paciente"> <br>
+    <input type="text" name="paciente-crm" placeholder="Insira o CRM do médico que atendeu o paciente" required> <br>
 
     <label for="paciente-data" class="alinha">Data da internação:</label>
-    <input type="date" name="paciente-data"> <br>
+    <input type="date" name="paciente-data" required> <br>
 
-    <button type="submit" name="cadastrar-paciente">Cadastrar Paciente</button>
+    <button form="pacientes" type="submit" name="cadastrar-paciente">Cadastrar Paciente</button>
 
   </fieldset>
+</form>
 
+<form id="busca" action="exercicio4.php" method="post">
   <fieldset>
     
     <legend>Filtros de Busca</legend>
@@ -49,15 +53,15 @@
     <label for="busca-data" class="alinha">Data para busca (opcional):</label>
     <input type="date" name="busca-data"> <br>
 
-    <button type="submit" name="busca-crm">Ver Consultas Cadastradas</button>
+    <button form="busca" type="submit" name="busca-crm">Ver Consultas Cadastradas</button>
 
   </fieldset>
+</form>
 
+<form action="exercicio4.php" method="get">
   <fieldset>
     <button type="submit">Recarregar</button>
-  </fieldset>
-
- 
+  </fieldset> 
 </form>
 
 </body> 
@@ -77,6 +81,9 @@
 
 
     // Lógica dos botões
+    if(isset($_POST)) {
+      var_dump($_POST);
+    }
 
     if (isset($_POST['cadastrar-paciente'])) {
         include "../includes/cadastrar-paciente.inc.php";
@@ -93,5 +100,20 @@
     // Desconectar do Banco de Dados
 
     include "../includes/desconectar.inc.php";
+
+    // Para ficar profissional, o que precisa?
+
+    // Selecionar - Usar Filtros
+    // Requerer e validar todos os campos (inclusive usando expressões regulares)
+    // Só deixar buscar por médicos que já estão cadastrados
+    // Mostrar CRM com o nome do médico no cadastro da consulta
+    // Separar Cadastro de médico, de paciente e de consultas
+
+    // Melhor ainda, mostrar uma tabela, tipo uma agenda, com o tipo da consulta e horário da consulta
+    // Se for cadastrar para mesmo médico, mesmo dia e mesmo horário, tem que dar erro
+
+    // Nossa, é quase uma aplicação completa =O
+    // Parece legal.. mas o mais legal seria colocar APIs e ainda um javascript lindinho
+    // Deixar agendar via tabela de agenda <3
 
 ?>
