@@ -1,11 +1,43 @@
 <?php
 
     // que zona que eu fiz =O
-    // não ficou legal isso aqui, muito parâmetro passando pra lá e pra cá
-    // fazer o criar query
-    // o checar médico
-    // tabular resultados
 
+    function textoRelatorio($request, $registros) {
+
+        $texto = "Consultas Realizadas na Clínica";
+        $texto .= "<br>Pelo médico: ";
+        if (!empty($request['busca-medico'])) {
+            $nomeMedico = $request['busca-medico'];
+            $texto .= "$nomeMedico";
+        }
+        else {
+            $texto .= "TODOS";
+        }
+        
+        $texto .= "<br>Após a data: ";
+
+        if (!empty($request['busca-data'])) {
+            $data = $request['busca-data'];
+            $dataFormatada = new Datetime($data);
+            $dataFormatada = $dataFormatada->format('d/m/y');
+            $texto .= "$dataFormatada";
+        }
+        else {
+            $texto .= "TODAS";
+        }
+
+        if ($registros < 1) {
+            $texto .= "<br><br>Nenhuma consulta encontrada com estes filtros!";
+            return $texto;
+        }
+
+        $texto .= "<br>Total: $registros consulta(s)";
+
+        return $texto;
+
+    }
+
+    
     function criarQuery($request, $tabelaMedicos, $tabelaPacientes) {
         $where = "";
         $texto = "";
@@ -19,15 +51,12 @@
         if (!empty($request['busca-data'])) {
             $data = $request['busca-data'];
             $where .= " AND $tabelaPacientes.data_consulta >= '$data' ";
-            $dataFormatada = new Datetime($data);
-            $dataFormatada = $dataFormatada->format('d/m/y');
-            $texto .= "<br>Após a data: $dataFormatada";
         }
     
         $sql = "SELECT id, $tabelaPacientes.nome as Paciente, $tabelaMedicos.nome as Medico, data_consulta 
                     FROM $tabelaPacientes 
-                    JOIN $tabelaMedicos 
-                    ON $tabelaPacientes.crm_medico = $tabelaMedicos.crm 
+                        JOIN $tabelaMedicos 
+                        ON $tabelaPacientes.crm_medico = $tabelaMedicos.crm 
                     $where 
                     ORDER BY id";
         
@@ -71,9 +100,9 @@
 
 
     // ISSO AQUI NÃO TÀ FUNCIONANDO!!!! POR QUÊ?????
-    if (isset($request['busca-medico'])) {
+    if (!empty($_POST['busca-medico'])) {
         
-        if (!medicoExiste($request['busca-medico'], $conexaoMySql, $tabelaMedicos)) {
+        if (!medicoExiste($_POST['busca-medico'], $conexao, $tabelaMedicos)) {
             exit("<p>Médico não cadastrado em nosso sistema</p>");
         }
 
@@ -85,9 +114,7 @@
 
     $registros = $conexao->affected_rows;
     
-    //echo "<p>Consultas Realizadas na Clínica $texto <br>Total = $registros consultas</p>";
-
-    echo "<p>Consultas Realizadas na Clínica <br>Total = $registros consultas</p>";
+    echo "<p>" . textoRelatorio($_POST, $registros) . "</p>";
 
     if($registros > 0) {
         tabularResultados($resultado);    

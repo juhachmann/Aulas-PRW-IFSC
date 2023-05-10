@@ -89,7 +89,6 @@
         include "../includes/cadastrar-medico.inc.php";
     }
     else if (isset($_POST['busca-crm'])) {
-        //var_dump($_POST);
         include "../includes/buscar-crm.inc.php";
     }
 
@@ -97,6 +96,7 @@
     // Desconectar do Banco de Dados
 
     include "../includes/desconectar.inc.php";
+
 
     // Para ficar profissional, o que precisa?
 
