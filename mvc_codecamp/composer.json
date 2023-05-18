@@ -1,0 +1,15 @@
+{
+    "name": "juli/mvc_codecamp",
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "authors": [
+        {
+            "name": "Juliana Hachmann",
+            "email": "juliana.hachmann@gmail.com"
+        }
+    ],
+    "require": {}
+}
