@@ -10,11 +10,7 @@
  <h1> Autenticação de usuário com PHP - HOME </h1>
 
  <?php
-    session_start();
-    var_dump($_SESSION);
-    if (!$_SESSION['conectado']) {
-        exit("Você não deveria estar aqui!");
-    }
+    require "../includes/testar-login.inc.php";
  ?>
 
  <div>

@@ -1,5 +1,7 @@
 <?php
 
+    session_start();
+
     $nome = $conexao->escape_string(trim($_POST['nome']));
     $login = $conexao->escape_string(trim($_POST['login']));
     $senha = $conexao->escape_string(trim($_POST['senha']));
@@ -12,6 +14,6 @@
 
     echo "<p>Cadastro realizado com sucesso!</p>";
 
-    session_start();
     $_SESSION['conectado'] = true;
     header("location: protegida.php");
+
