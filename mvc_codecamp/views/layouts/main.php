@@ -1,3 +1,9 @@
+<?php
+
+    use app\core\Application;
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -24,15 +30,32 @@
             <a class="nav-link" href="/contact">Contact</a>
             </li>
         </ul>
-        <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+            <a class="nav-link" href="/register">Register</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+            </li>
+        </ul>
         </div>
     </div>
     </nav>
 
-    {{content}}
+    <?php if (Application::$app->session->getFlash('success')): 
+        // talvez só seja mais fácil ver se tem uma variável que passa pra cá...
+    ?>
+        <div class="alert alert-success">
+        <?php echo Application::$app->session->getFlash('success') ?>
+        </div>
+    
+    <?php endif ?>
+
+
+    <div class="container">
+        {{content}}
+    </div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
