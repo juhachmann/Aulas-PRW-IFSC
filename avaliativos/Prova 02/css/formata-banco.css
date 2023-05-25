@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Sofia+Sans+Condensed&display=swap');
+
+
+body {
+ font-family: "Sofia Sans Condensed";
+ margin: 0;
+}
+
+
+.main-title {
+ text-align: center;
+ border-bottom: 1px solid #777;
+ background: #fcd787;
+ margin: 0;
+}
+
+
+label.alinha {
+ width: 200px; 
+ display: inline-block;
+ margin-bottom: 15px;
+}
+
+
+input, button {
+ font-family: Oswald;
+}
+
+
+
+fieldset {
+ width: 70%;
+ margin: 30px auto;
+ padding-left: 20px;
+ padding-bottom: 20px;
+ border-radius: 10px; /*arredonda os cantos da caixa*/
+ box-shadow: 5px 5px 5px #bbb;
+ background-color: rgba(243, 202, 113, 0.459);
+}
+
+div.alinha-botoes {
+ text-align: center; /*recurso para alinharmos botões no centro de uma div*/
+}
+
+span {
+ font-weight: bold;
+ color: #666;
+ font-style: italic;
+}
+
+table {
+ background-color: rgba(243, 202, 113, 0.459);
+ margin: 30px auto;
+ text-align: center;
+}
+
+thead {
+ background-color: rgba(243, 202, 113);
+}
+
+tr:hover {
+    background-color: rgba(243, 202, 113)
+}
