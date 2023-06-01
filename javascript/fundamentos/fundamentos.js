@@ -29,7 +29,7 @@
 // JSON
 // Typed Array
 // Precedence
-
+// + Maps
 
 
 // ARRAY
@@ -367,6 +367,31 @@ const julianaDeNovo = JSON.parse(jsonJu);
 
 
 
+// + MAPS
+
+// A Map holds key-value pairs where the keys can be any datatype.
+// A Map remembers the original insertion order of the keys.
+// A Map has a property that represents the size of the map.
+
+const fruits = new Map([
+    ["bananas", 500],
+    ["laranjas", 800]
+]);
+fruits.set("apples", 400);
+
+
+// Create Objects
+const apples = {name: 'Apples'};
+const bananas = {name: 'Bananas'};
+const oranges = {name: 'Oranges'};
+
+// Create a Map
+const newFruits = new Map();
+
+// Add new Elements to the Map
+newFruits.set(apples, 500);
+newFruits.set(bananas, 300);
+newFruits.set(oranges, 200);
 
 
 
@@ -384,78 +409,7 @@ const julianaDeNovo = JSON.parse(jsonJu);
 
 
 
-// Callback Functions!
 
-
-// A callback is a function passed as an argument to another function
-// This technique allows a function to call another function
-// A callback function can run after another function has finished
-
-
-function myDisplayer(some) {
-    document.getElementById("demo").innerHTML = some;
-  }
-  
-  function myCalculator(num1, num2, myCallback) {
-    let sum = num1 + num2;
-    myCallback(sum);
-  }
-  
-myCalculator(5, 5, myDisplayer);
-// Aqui, uma função é passada como callback e é executada depois de outra
-
-
-
-// Create an Array
-const myNumbers = [4, 1, -20, -7, 5, 9, -6];
-
-// Call removeNeg with a callback
-const posNumbers = removeNeg(myNumbers, (x) => x >= 0);
-
-// Display Result
-document.getElementById("demo").innerHTML = posNumbers;
-
-// Keep only positive numbers
-function removeNeg(numbers, callback) {
-  const myArray = [];
-  for (const x of numbers) {
-    if (callback(x)) {
-      myArray.push(x);
-    }
-  }
-  return myArray;
-}
-
-// Aqui, o callback é usado dentro da função, para cada item
-
-
-// veja esta sintaxe
-// (x) => x > 0;
-// É o mesmo que:
-function isPositive(x) {
-    return x > 0;
-}
-// (retorna se um número é positivo)
-
-
-// Sintaxe
-// (x)      função anônima de x
-// =>       retorna
-// x > 0    retorno  
-
-
-// Where callbacks really shine are in asynchronous functions, where one function has to wait for another 
-// function (like waiting for a file to load).
-
-// Funções assíncronas
-// Functions running in parallel with other functions are called asynchronous
-
-
-
-
-
-// Funções anônimas
-// 
 
 
 
