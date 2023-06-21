@@ -25,7 +25,7 @@
 </form>
 
 <form id="pacientes" action="exercicio4.php" method="post">
-  <fieldset>
+  <fieldset id="cadastro-pacientes">
     <legend>Cadastro de Consultas</legend>
 
     <label for="paciente-nome" class="alinha">Nome do paciente:</label>

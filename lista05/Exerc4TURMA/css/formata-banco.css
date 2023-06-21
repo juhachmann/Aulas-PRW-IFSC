@@ -91,3 +91,7 @@ th {
 td {
  text-align: center;
 }
+
+fieldset#cadastro-pacientes {
+    display: none;
+}
